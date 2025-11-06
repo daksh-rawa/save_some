@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Calendar } from "@/components/ui/calendar"
 
 export default function DashboardPage() {
   const [name, setName] = useState("");
   const [savedName, setSavedName] = useState("");
+  const [date, setDate] = useState<Date | undefined>(new Date())
 
   // Load name from localStorage
   useEffect(() => {
@@ -46,6 +48,14 @@ export default function DashboardPage() {
           Save Name
         </button>
       </div>
+      <div>
+      <Calendar
+    mode="single"
+    selected={date}
+    onSelect={setDate}
+    className="rounded-lg border"
+  />
+  </div>
     </div>
   );
 }
